@@ -1,0 +1,20 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td, footer,header { margin:0; padding:0; box-sizing: border-box}
+body { background:#fff; color:#1b1b1b; font-family:"微软雅黑","Microsoft YaHei UI", Verdana, Arial, Helvetica, sans-serif; }
+td,th,caption { font-size:14px; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#555; text-decoration:none; }
+a:hover { text-decoration:none; }
+img { border:none; }
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font-family:"微软雅黑",Microsoft YaHei UI,Verdana,Helvetica,Arial,sans-serif; }
+table { border-collapse:collapse; }
+html {overflow-y: scroll;}
+
+.clearfix:after {content: "\20"; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix { *zoom:1; }
+
+.mint-switch-input:checked+.mint-switch-core {
+    border-color: #44DB5E !important;
+    background-color: #44DB5E !important;
+}
