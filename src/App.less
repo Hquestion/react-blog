@@ -1,25 +1,51 @@
-.App {
-  text-align: center;
+@import "./static/less/base";
+
+.to-rem(@px) {
+  @rem: ((@px / @vw_fontsize ) * 1rem);
 }
 
+.App {
+  text-align: center;
+  font-size: 16/@vw_fontsize * 1rem;
+}
+.logo-container {
+  width: 100vw;
+  height: (80 / @vw_fontsize) * 1rem;
+  text-align: center;
+  line-height: 0;
+}
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  //animation: App-logo-spin infinite 20s linear;
+  height: (80 / @vw_fontsize) * 1rem;
+  border-radius: (80 / @vw_fontsize) * 1rem;
+  width: (80 / @vw_fontsize) * 1rem;
+
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #333;
+  height: (150 / @vw_fontsize) * 1rem;
+  padding: (20 / @vw_fontsize) * 1rem;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: (24 / @vw_fontsize) * 1rem;;
 }
 
-.App-intro {
-  font-size: large;
+@media screen and (max-width: 540px) {
+  .App-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 black;
+    .logo-container {
+      width: auto;
+    }
+    .App-title {
+      flex: 0.8;
+    }
+  }
 }
 
 @keyframes App-logo-spin {
