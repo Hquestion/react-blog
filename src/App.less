@@ -9,7 +9,6 @@
   font-size: 16/@vw_fontsize * 1rem;
 }
 .logo-container {
-  width: 100vw;
   height: (80 / @vw_fontsize) * 1rem;
   text-align: center;
   line-height: 0;
@@ -33,6 +32,18 @@
   font-size: (24 / @vw_fontsize) * 1rem;;
 }
 
+.App-main {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 150/@vw_fontsize * 1rem - 60/@vw_fontsize * 1rem);
+}
+footer {
+  font-size: 13/@vw_fontsize * 1rem;
+  padding: 20 / @vw_fontsize * 1rem 0;
+  color: #aaa;
+}
+
 @media screen and (max-width: 540px) {
   .App-header {
     display: flex;
@@ -45,6 +56,10 @@
     .App-title {
       flex: 0.8;
     }
+  }
+  .App-main {
+    width: 100%;
+    padding: 0 15/@vw_fontsize * 1rem;
   }
 }
 

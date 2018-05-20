@@ -22,5 +22,30 @@ export default {
                 handleResponse(res).then(resolve, reject);
             });
         });
+    },
+    likeArticle(article_id){
+        return new Promise((resolve, reject) => {
+            axios.post('/webblog/like-article/', {id: article_id}).then(res => {
+                handleResponse(res).then(resolve, reject);
+            });
+        });
+    },
+    readArticle(article_id){
+        return new Promise((resolve, reject) => {
+            axios.post('/webblog/read-article/', {id: article_id}).then(res => {
+                handleResponse(res).then(resolve, reject);
+            });
+        });
+    },
+    getArticleDetail(id){
+        return new Promise((resolve, reject) => {
+            axios.get('/webblog/article-detail/', {
+                params: {
+                    id: id
+                }
+            }).then(res => {
+                handleResponse(res).then(resolve, reject);
+            });
+        });
     }
 }

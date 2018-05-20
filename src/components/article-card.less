@@ -1,8 +1,47 @@
 @import "../static/less/base";
 
 .article-card {
-  padding: (10/@vw_fontsize) * 1rem;
+  width: 100%;
+  padding: (20/@vw_fontsize) * 1rem;
   background: #ffffff;
-  box-shadow: 0 0 10px 2px #ccc;
+  box-shadow: 0 0 10px 1px #e1e1e1;
   text-align: left;
+  .article-card-title {
+    font-size: 20/@vw_fontsize * 1rem;
+    font-weight: bold;
+  }
+  .acticle-card-time {
+    color: #aaa;
+    font-size: 12/@vw_fontsize * 1rem;
+    margin-top: 10/@vw_fontsize * 1rem;
+    font-style: italic;
+  }
+  .acticle-card-content {
+    margin-top: 10/@vw_fontsize * 1rem;
+    font-size: 15/@vw_fontsize *1rem;
+    color: #333;
+    a {
+      color: #92aedc;
+      font-size: 13/@vw_fontsize * 1rem;
+      &:hover {
+        color: #44DB5E;
+      }
+    }
+  }
+  .article-brief {
+    display: flex;
+    font-size: 12/@vw_fontsize *1rem;
+    color: #666;
+    margin-top: 10/@vw_fontsize *1rem;
+    .article-action {
+      cursor: pointer;
+      &:hover, &:active {
+        color: #44DB5E;
+      }
+      & + .article-action {
+        margin-left: 10/@vw_fontsize *1rem;
+
+      }
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../../api'
 import ArticleCard from "../../components/ArticleCard";
+import "./home.less";
 
 export default class Home extends React.Component {
     constructor(props){
@@ -23,9 +24,9 @@ export default class Home extends React.Component {
         const articleList = this.state.articleList;
         return (
             <div className="home">
-                {articleList.map(item => {
+                {articleList.map((item, index) => {
                     return (
-                        <ArticleCard data={item}/>
+                        <ArticleCard data={item} key={index}/>
                     )
                 })}
             </div>

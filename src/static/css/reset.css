@@ -3,9 +3,9 @@ body { background:#fff; color:#1b1b1b; font-family:"微软雅黑","Microsoft YaH
 td,th,caption { font-size:14px; }
 h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
 address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
-a { color:#555; text-decoration:none; }
-a:hover { text-decoration:none; }
-img { border:none; }
+a { color:#555; text-decoration:none;cursor: pointer}
+a:hover { text-decoration:none; color: #44DB5E}
+img { border:none; max-width: 1080px;}
 ol,ul,li { list-style:none; }
 input, textarea, select, button { font-family:"微软雅黑",Microsoft YaHei UI,Verdana,Helvetica,Arial,sans-serif; }
 table { border-collapse:collapse; }
@@ -17,4 +17,10 @@ html {overflow-y: scroll;}
 .mint-switch-input:checked+.mint-switch-core {
     border-color: #44DB5E !important;
     background-color: #44DB5E !important;
+}
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
 }
