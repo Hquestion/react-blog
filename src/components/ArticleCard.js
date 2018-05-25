@@ -51,6 +51,13 @@ class ArticleCard extends Component {
             <div className="article-card">
                 <div className="article-card-title">{data.title}</div>
                 <div className="acticle-card-time">发布于{publishTime}</div>
+                <div className="article-card-tag">
+                    {data.tag.map(tagItem => {
+                        return (
+                            <a className="tag-item">{tagItem.name}</a>
+                        )
+                    })}
+                </div>
                 <div className="acticle-card-content">
                     <span dangerouslySetInnerHTML={{__html: content}}/>
                     <a onClick={(e) => this.read(e)}>阅读全部&nbsp;>></a>
