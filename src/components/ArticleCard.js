@@ -54,7 +54,7 @@ class ArticleCard extends Component {
                 <div className="article-card-tag">
                     {data.tag.map(tagItem => {
                         return (
-                            <a className="tag-item">{tagItem.name}</a>
+                            <a className="tag-item" key={tagItem.id}>{tagItem.name}</a>
                         )
                     })}
                 </div>

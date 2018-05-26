@@ -16,9 +16,14 @@ function handleResponse(res) {
 }
 
 export default {
-    getArticleList(){
+    getArticleList(pageIndex, pageSize){
         return new Promise((resolve, reject) => {
-            axios.get('/webblog/article-list/').then(res => {
+            axios.get('/webblog/article-list/', {
+                params: {
+                    page_index: pageIndex,
+                    page_size: pageSize
+                }
+            }).then(res => {
                 handleResponse(res).then(resolve, reject);
             });
         });
