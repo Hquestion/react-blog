@@ -47,6 +47,7 @@ export default class Home extends React.Component {
                     )
                 })}
                 <Pagination onChange={this.onChange}
+                            hideOnSinglePage={true}
                             current={this.state.current}
                             pageSize={pageSize}
                             total={this.state.total}/>

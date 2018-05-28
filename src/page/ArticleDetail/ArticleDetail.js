@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Comment from '../../components/Comment';
+import {BackTop} from 'antd';
 import api from '../../api';
 import dayjs from "dayjs";
 import config from "../../config";
@@ -14,7 +15,8 @@ class ArticleDetail extends React.Component {
             articleMeta: {},
             tags: [],
             commentPageIndex: 1,
-            comments: []
+            comments: [],
+            commentTotal: 0
         }
     }
 
@@ -32,7 +34,8 @@ class ArticleDetail extends React.Component {
         });
         api.getCommentsByPage(id, this.state.commentPageIndex, commentPageSize).then(res => {
             this.setState({
-                comments: res.list
+                comments: res.list,
+                commentTotal: res.total
             });
         });
     }
@@ -59,7 +62,8 @@ class ArticleDetail extends React.Component {
                         )
                     })}
                 </div>
-                <Comment list={this.state.comments} articleId={id}/>
+                <Comment list={this.state.comments} total={this.state.commentTotal} articleId={id}/>
+                <BackTop/>
             </div>
         );
     }

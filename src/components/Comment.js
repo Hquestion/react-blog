@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Button, Avatar} from 'antd';
+import {Button, Avatar, Pagination} from 'antd';
 import CommentPop from './CommentPop';
 import './comment.less';
 import api from '../api';
 import dayjs from 'dayjs';
 
+const pageSize = 10;
 export default class Comment extends Component {
     constructor(props){
         super(props);
@@ -13,16 +14,20 @@ export default class Comment extends Component {
             nickName: '',
             commentContent: '',
             commentVisible: false,
-            articleId: this.props.articleId
+            articleId: this.props.articleId,
+            current: 1,
+            total: this.props.total
         };
         this.sendComment = this.sendComment.bind(this);
         this.doComment = this.doComment.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.list) {
             this.setState({
-                commentList: nextProps.list
+                commentList: nextProps.list,
+                total: nextProps.total
             });
         }
     }
@@ -47,6 +52,15 @@ export default class Comment extends Component {
                 commentVisible: false
             });
         });
+    }
+
+    onPageChange(pageIndex, pageSize){
+        api.getCommentsByPage(this.state.articleId, pageIndex, pageSize).then(res => {
+            this.setState({
+                commentList: [...res.list],
+                current: pageIndex
+            });
+        })
     }
     
     render(){
@@ -74,7 +88,15 @@ export default class Comment extends Component {
                             </li>
                         )
                     })}
+                    {this.state.commentList.length === 0 && (
+                        <div style={{textAlign: 'center',padding: "20px", color: "#ccc"}}>还没有看官想说点什么~~</div>
+                    )}
                 </ul>
+                <Pagination onChange={this.onPageChange}
+                            hideOnSinglePage={true}
+                            current={this.state.current}
+                            pageSize={pageSize}
+                            total={this.state.total}/>
                 <CommentPop visible={this.state.commentVisible} onComment={this.doComment}/>
             </div>
         );

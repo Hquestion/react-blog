@@ -18,7 +18,10 @@
   height: (80 / @vw_fontsize) * 1rem;
   border-radius: (80 / @vw_fontsize) * 1rem;
   width: (80 / @vw_fontsize) * 1rem;
-
+  transition: all ease-in .5s;
+  &:hover {
+    transform: rotate(360deg);
+  }
 }
 
 .App-header {

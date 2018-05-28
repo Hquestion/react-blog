@@ -11,6 +11,8 @@ export default class CommentPop extends Component {
             visible: this.props.visible,
             animate: false,
         };
+        this.input = null;
+        this.textarea = null;
 
         this.doComment = this.doComment.bind(this);
         this.cancelComment = this.cancelComment.bind(this);
@@ -46,6 +48,8 @@ export default class CommentPop extends Component {
 
     doComment(){
         this.props.onComment(this.state.nickname, this.state.commentContent);
+        this.input.input.value = '';
+        this.textarea.textAreaRef.value = '';
         this.setState({
             animate: false
         }, ()=>{
@@ -64,8 +68,13 @@ export default class CommentPop extends Component {
                 <div className={`comment-pop ${this.state.visible ? 'visible' : ''} ${this.state.animate? 'animate': ''}`}>
                     <div className="comment-pop-form">
                         <div className="comment-title">请告诉我你的看法</div>
-                        <Input className="nick-name-input" type="text" placeholder="昵称" onBlur={(e) => this.setState({nickname: e.target.value})}/>
+                        <Input className="nick-name-input"
+                               ref={(e) => this.input = e}
+                               type="text"
+                               placeholder="昵称"
+                               onBlur={(e) => this.setState({nickname: e.target.value})}/>
                         <Input.TextArea className="comment-input"
+                                        ref={(e) => this.textarea = e}
                                         placeholder="你想说什么？"
                                         autosize={{minRows:3}}
                                         onBlur={(e) => this.setState({commentContent: e.target.value})}/>
