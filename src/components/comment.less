@@ -1,0 +1,40 @@
+@import "../static/less/base";
+
+.comment {
+  margin-top: 20/@vw_fontsize *1rem;
+  .comment-header {
+    background: #efefef;
+    padding: 10/@vw_fontsize *1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .comment-content-container {
+    padding: 10/@vw_fontsize*1rem;
+    li {
+      display: flex;
+      border-top: 1px solid #f1f1f1;
+      padding: 10/@vw_fontsize*1rem 0;
+      &:last-child {
+        border-bottom: 1px solid #f1f1f1;
+      }
+      .comment-detail {
+        margin-left: 10/@vw_fontsize*1rem;
+        color: #666;
+        .user-name {
+          span + span {
+            font-size: 12/@vw_fontsize*1rem;
+            margin-left: 10/@vw_fontsize*1rem;
+            color: #999;
+            font-style: italic;
+          }
+        }
+        .comment-text{
+          font-size: 14/@vw_fontsize*1rem;
+          padding: 8/@vw_fontsize*1rem 0;
+          color: #222;
+        }
+      }
+    }
+  }
+}

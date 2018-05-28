@@ -52,5 +52,36 @@ export default {
                 handleResponse(res).then(resolve, reject);
             });
         });
+    },
+    getArticleTags(id){
+        return new Promise((resolve, reject) => {
+            axios.get(`/webblog/getTagsByArticle/`, {
+                params: {
+                    article_id: id
+                }
+            }).then(res => {
+                handleResponse(res).then(resolve, reject);
+            });
+        });
+    },
+    getCommentsByPage(id, pageindex, pagesize){
+        return new Promise((resolve, reject) => {
+            axios.get(`/webblog/article-comment/`, {
+                params: {
+                    id: id,
+                    page_index: pageindex,
+                    page_size: pagesize
+                }
+            }).then(res => {
+                handleResponse(res).then(resolve, reject);
+            });
+        });
+    },
+    comment(param){
+        return new Promise((resolve, reject) => {
+            axios.post(`/webblog/comment/`, param).then(res => {
+                handleResponse(res).then(resolve, reject);
+            });
+        });
     }
 }

@@ -1,0 +1,54 @@
+@import "../static/less/base";
+
+.comment-pop-container {
+  display: none;
+  color: #fff;
+  &.visible {
+    display: block;
+  }
+  .comment-pop-mask {
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background: transparent;
+  }
+  .comment-pop {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200/@vw_fontsize*1rem;
+    transform: translateY(100%);
+    transition: all ease-in .3s;
+    will-change: transform;
+    display: none;
+    background: #222;
+    &.visible {
+      display: block;
+      &.animate {
+        transform: translateY(0);
+      }
+    }
+    .comment-pop-form {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+      .comment-title {
+        margin-top: 10/@vw_fontsize * 1rem;
+      }
+      .nick-name-input {
+        margin-top: 10/@vw_fontsize*1rem;
+      }
+      .comment-input {
+        margin-top: 10/@vw_fontsize*1rem;
+        resize: none;
+      }
+      .comment-btn {
+        margin-top: 10/@vw_fontsize*1rem;
+        width: 100/@vw_fontsize*1rem;
+      }
+    }
+  }
+}

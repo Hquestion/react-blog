@@ -1,15 +1,20 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import Comment from '../../components/Comment';
 import api from '../../api';
 import dayjs from "dayjs";
 import config from "../../config";
 import './article-detail.less';
 
+const commentPageSize = 10;
 class ArticleDetail extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            articleMeta: {}
+            articleMeta: {},
+            tags: [],
+            commentPageIndex: 1,
+            comments: []
         }
     }
 
@@ -20,9 +25,20 @@ class ArticleDetail extends React.Component {
                 articleMeta: res
             });
         });
+        api.getArticleTags(id).then(res => {
+            this.setState({
+                tags: res
+            });
+        });
+        api.getCommentsByPage(id, this.state.commentPageIndex, commentPageSize).then(res => {
+            this.setState({
+                comments: res.list
+            });
+        });
     }
 
     render(){
+        const id = this.props.match.params.id;
         const data = this.state.articleMeta;
         const publishTime = dayjs(data.create_time).format("YYYY年MM月DD日");
 
@@ -36,6 +52,14 @@ class ArticleDetail extends React.Component {
                     </div>
                 )}
                 <div className="article-content markdown-body" dangerouslySetInnerHTML={{__html: data.content}}/>
+                <div className="article-label">
+                    {this.state.tags.map(tagItem => {
+                        return (
+                            <a className="tag-item" key={tagItem.id}>{tagItem.name}</a>
+                        )
+                    })}
+                </div>
+                <Comment list={this.state.comments} articleId={id}/>
             </div>
         );
     }
