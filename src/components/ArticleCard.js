@@ -36,7 +36,7 @@ class ArticleCard extends Component {
                     data: {...this.state.data, ...{read_counts: res}}
                 });
             }
-            this.props.history.push(`/article-detail/${this.state.data.id}`);
+            this.props.history.push(`article-detail/${this.state.data.id}`);
         });
     }
 
@@ -48,7 +48,7 @@ class ArticleCard extends Component {
         el.innerHTML = data.content;
         const content = el.innerText.slice(0, 300) + '...';
         return (
-            <div className="article-card">
+            <div className="article-card" onClick={(e) => this.read(e)}>
                 <div className="article-card-title">{data.title}</div>
                 <div className="acticle-card-time">发布于{publishTime}</div>
                 <div className="article-card-tag">
